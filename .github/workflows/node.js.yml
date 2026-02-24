@@ -50,7 +50,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          <your-dockerhub-account>/ambulance-ufe
+          <greendev15>/ambulance-ufe
         tags: |
           type=schedule
           type=ref,event=branch
@@ -69,4 +69,3 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-        
