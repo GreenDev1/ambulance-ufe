@@ -5,7 +5,7 @@ import fetchMock from 'jest-fetch-mock';
 
 describe('nl-ambulance-wl-list', () => {
 
-    const sampleEntries: WaitingListEntry[] = [
+  const sampleEntries: WaitingListEntry[] = [
     {
       id: "entry-1",
       patientId: "p-1",
@@ -34,7 +34,7 @@ describe('nl-ambulance-wl-list', () => {
     fetchMock.mockResponseOnce(JSON.stringify(sampleEntries));
     const page = await newSpecPage({
       components: [NlAmbulanceWlList],
-      html: `<nl-ambulance-wl-list></nl-ambulance-wl-list>`,
+      html: `<nl-ambulance-wl-list ambulance-id="test-ambulance" api-base="http://test/api"></nl-ambulance-wl-list>`,
     });
     const wlList = page.rootInstance as NlAmbulanceWlList;
     const expectedPatients = wlList?.waitingPatients?.length
@@ -47,7 +47,7 @@ describe('nl-ambulance-wl-list', () => {
     expect(items.length).toEqual(expectedPatients);
   });
 
-    it('renders error message on network issues', async () => {
+  it('renders error message on network issues', async () => {
     // Mock the network error
     fetchMock.mockRejectOnce(new Error('Network Error'));
 

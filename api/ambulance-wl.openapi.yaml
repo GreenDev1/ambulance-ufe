@@ -43,7 +43,6 @@ paths:
                   $ref: "#/components/examples/WaitingListEntriesExample"
         "404":
           description: Ambulance with such ID does not exist
-
 components:
   schemas:
     WaitingListEntry:
